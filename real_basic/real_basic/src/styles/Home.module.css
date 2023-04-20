@@ -1,0 +1,17 @@
+.main {
+  background-color: black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 6rem;
+  min-height: 100vh;
+}
+
+.box {
+  margin: auto;
+  height: 200px;
+  width: 200px;
+  background-color: rgb(255, 0, 0);
+
+}
