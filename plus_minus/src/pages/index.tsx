@@ -1,13 +1,37 @@
 import React from "react"
+import { useState } from "react"
 
-export default function Home() {
+function Counter() {
+  const [num, setNum] = useState(0);
+
+  const handlePlusClick = () => {
+    setNum(num + 1);
+  };
+
+  const handleMinusClick = () => {
+    setNum(num - 1);
+  };
+
+  const handleNollClick = () => {
+    setNum(0);
+  };
+
   return (
-    <>
+    <div id="body">
       <div>
-        <button id="plus">Plus</button>
-        <button id="minus">Minus</button>
-        <button id="noll">Noll</button>
+        <p>Count: {num}</p>
+        <button id="plus" onClick={handlePlusClick}>
+          +
+        </button>
+        <button id="minus" onClick={handleMinusClick}>
+          -
+        </button>
+        <button id="noll" onClick={handleNollClick}>
+          Reset
+        </button>
       </div>
-    </>
-  )
+    </div>
+  );
 }
+
+export default Counter;
