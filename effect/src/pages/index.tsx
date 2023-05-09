@@ -1,29 +1,39 @@
+import { log } from "console"
 import React, { useEffect, useState } from "react"
 
 export default function Home() {
-  const [users, setUsers] = useState([])
-  const [update, setUpdate] = useState(0)
-  async function fetchData() {
-    const res = await fetch('http://10.111.3.78:3000/api/users');
-    const data = await res.json();
-    setUsers(data)
+  const [timer, setTimer] = useState(0)
+  const [isActive, setIsActive] = useState(false)
 
+
+  function toggle() {
+    setIsActive(!isActive)
   }
+
   useEffect(() => {
-    fetchData()
-    console.log('render');
+    let interval = null as any
 
-  }, [update])
+    if (isActive) {
+      interval = setInterval(() => {
+        setTimer(timer => timer + 1)
+      }, 1000)
+
+    } else if (!isActive && timer !== 0) {
+      clearInterval(interval)
+    }
+
+    return () => clearInterval(interval)
+  }, [isActive, timer])
+
   return (
-    <div>
-      {users.map(user => (
-        <div>
-          <h1>{user.name}</h1>
+    <>
+      <div>
+        <h1>{timer}</h1>
+        <div id="buttons">
+          <button onClick={toggle}>{isActive ? 'Pause' : 'Start'}</button>
+          <button onClick={() => setTimer(0)}>Reset</button>
         </div>
-
-      ))}
-      <button onClick={() => setUpdate(update + 1)}>render</button>
-    </div>
-
+      </div>
+    </>
   )
 }
