@@ -12,10 +12,10 @@ export default function Home() {
 
   return (
     <body className="flex items-center justify-center">
-      <div>
-        <input
-          type="text"
-          className="text-black"
+      <div className="w-96">
+        <h1>Word Counter</h1>
+        <textarea
+          className="text-black p-2 w-full h-96"
           value={inputText}
           onChange={handleInputChange}
         />
