@@ -11,7 +11,7 @@ import '@fontsource/roboto/700.css';
 export default function HomePage() {
   var [number1, setNumber1] = useState<string>('');
   var [number2, setNumber2] = useState<string>('');
-  var [sum, setSum] = useState<number>();
+  var [sum, setSum] = useState<number>(0);
 
   function addition() {
     setSum(parseFloat(number1) + parseFloat(number2))
