@@ -14,19 +14,19 @@ export default function HomePage() {
   var [sum, setSum] = useState<number>(0);
 
   function addition() {
-    setSum(parseFloat(number1) + parseFloat(number2))
+    setSum(parseFloat(number1) + parseFloat(number2) * 1000 / 1000)
   }
 
   function subtraction() {
-    setSum(parseFloat(number1) - parseFloat(number2))
+    setSum(parseFloat(number1) - parseFloat(number2) * 1000 / 1000)
   }
 
   function multiplication() {
-    setSum(parseFloat(number1) * parseFloat(number2))
+    setSum(parseFloat(number1) * parseFloat(number2) * 1000 / 1000)
   }
 
   function division() {
-    setSum(parseFloat(number1) / parseFloat(number2))
+    setSum(parseFloat(number1) / parseFloat(number2) * 1000 / 1000)
   }
   return (
     <div>
