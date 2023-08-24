@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react'
 
 interface Todo {
   id: number;
-  completed: boolean;
+  title: string;
   text: string;
   createdAt: number;
 }
@@ -15,6 +15,7 @@ interface Todo {
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([])
   const [newTodoText, setNewTodoText] = useState<string>('')
+  const [newTodoTitle, setNewtodoTitle] = useState<string>('')
   const [editTodoId, setEditTodoId] = useState<number | null>(null)
   const [editTodoText, setEditTodoText] = useState<string>('')
 
@@ -33,22 +34,15 @@ export default function Home() {
     if (newTodoText.trim() !== '') {
       const newTodo: Todo = {
         id: Date.now(),
-        completed: false,
+        title: newTodoTitle,
         text: newTodoText,
         createdAt: Date.now()
       }
 
       setTodos(prevTodos => [...prevTodos, newTodo])
       setNewTodoText('')
+      setNewtodoTitle('')
     }
-  }
-
-  function toggleTodo(id: number) {
-    setTodos(prevTodos =>
-      prevTodos.map(todo =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
-    )
   }
 
   function startEdit(id: number, text: string) {
@@ -90,8 +84,9 @@ export default function Home() {
           alignItems: 'center',
           flexDirection: 'column'
         }}>
-          <TextField value={newTodoText} onChange={e => setNewTodoText(e.target.value)} sx={{ width: 500 }}></TextField>
-          <Button onClick={addTodo} variant="contained">Add to-Do</Button>
+          <TextField value={newTodoTitle} onChange={e => setNewtodoTitle(e.target.value)} placeholder="Enter a title"></TextField>
+          <TextField value={newTodoText} onChange={e => setNewTodoText(e.target.value)} placeholder="Add some text" sx={{ width: 500 }}></TextField>
+          <Button onClick={addTodo} variant="contained">Add document</Button>
         </Box>
         <TableContainer>
           <Table sx={{ minWidth: 500 }}>
@@ -109,8 +104,8 @@ export default function Home() {
                     </>
                   ) : (
                     <>
-                      <input type="checkbox" checked={todo.completed} onChange={() => toggleTodo(todo.id)}></input>
-                      <Typography style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>{todo.text}</Typography>
+                      <Typography fontWeight={'bold'} >{todo.title}</Typography>
+                      <Typography>{todo.text}</Typography>
                       <Typography fontSize={13} color={"gray"} >Created: {new Date(todo.createdAt).toLocaleString()}</Typography>
                       <Button onClick={() => startEdit(todo.id, todo.text)}>Edit</Button>
                       <DeleteIcon onClick={() => deleteTodo(todo.id)}></DeleteIcon>
