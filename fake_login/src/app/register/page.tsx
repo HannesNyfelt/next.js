@@ -7,8 +7,8 @@ const register = () => {
     return (
         <>
             <Box sx={{ width: '100%', height: 100, margin: 0, position: "top", backgroundColor: 'lightgray', borderRadius: 5, display: 'flex', alignItems: 'center', justifyContent: 'space-evenly' }}>
-                <Link style={{ textDecoration: 'none' }} href="/login">Login</Link>
-                <Link style={{ textDecoration: 'none' }} href="/">Home</Link>
+                <Link style={{ textDecoration: 'none', color: 'crimson' }} href="/login">Login</Link>
+                <Link style={{ textDecoration: 'none', color: 'crimson' }} href="/">Home</Link>
             </Box>
             <Box sx={{ width: '100%', height: 400, display: "flex", alignItems: 'center', justifyContent: 'center' }}>
                 <Card sx={{ width: '30%', height: '80%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>

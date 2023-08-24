@@ -7,8 +7,8 @@ const login = () => {
     return (
         <Box sx={{ height: '95vh' }}>
             <Box sx={{ width: '100%', height: '20%', margin: 0, position: "top", backgroundColor: 'lightgray', borderRadius: 5, display: 'flex', alignItems: 'center', justifyContent: 'space-evenly' }}>
-                <Link style={{ textDecoration: 'none' }} href="/">Home</Link>
-                <Link style={{ textDecoration: 'none' }} href="/register">Register</Link>
+                <Link style={{ textDecoration: 'none', color: 'crimson' }} href="/">Home</Link>
+                <Link style={{ textDecoration: 'none', color: 'crimson' }} href="/register">Register</Link>
             </Box>
             <Box sx={{ width: '100%', height: '80%', display: "flex", alignItems: 'center', justifyContent: 'center' }}>
                 <Card sx={{ width: '30%', height: '60%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
