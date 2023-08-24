@@ -10,7 +10,7 @@ const register = () => {
                 <Link style={{ textDecoration: 'none', color: 'crimson' }} href="/login">Login</Link>
                 <Link style={{ textDecoration: 'none', color: 'crimson' }} href="/">Home</Link>
             </Box>
-            <Box sx={{ width: '100%', height: 400, display: "flex", alignItems: 'center', justifyContent: 'center' }}>
+            <Box sx={{ width: '100%', height: 400, display: "flex", alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
                 <Typography fontSize={40}>Register</Typography>
                 <Card sx={{ width: '30%', height: '80%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
                     <TextField sx={{ margin: 2 }} label="Name" type="name" variant="outlined"></TextField>

@@ -10,7 +10,7 @@ const login = () => {
                 <Link style={{ textDecoration: 'none', color: 'crimson' }} href="/">Home</Link>
                 <Link style={{ textDecoration: 'none', color: 'crimson' }} href="/register">Register</Link>
             </Box>
-            <Box sx={{ width: '100%', height: '80%', display: "flex", alignItems: 'center', justifyContent: 'center' }}>
+            <Box sx={{ width: '100%', height: '80%', display: "flex", alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
                 <Typography fontSize={40}>Login</Typography>
                 <Card sx={{ width: '30%', height: '60%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
                     <TextField sx={{ margin: 2 }} label="Email" type="email" variant="outlined"></TextField>
