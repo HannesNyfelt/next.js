@@ -73,7 +73,6 @@ const content = {
     {
       label: 'perfromance',
       data: employees.map((employee) => employee.performance),
-      borderColor: 'rgb(255, 99, 132)',
       backgroundColor: 'rgba(255, 99, 132, 0.5)'
     },
   ],
