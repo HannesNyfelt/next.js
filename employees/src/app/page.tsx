@@ -101,8 +101,8 @@ export default function Employees() {
 
 
       <Tabs value={something} onChange={handleChange} aria-label='basic tabs example'>
-        <Tab label="Table">{a11yProps(0) as any}</Tab>
-        <Tab label="Chart">{a11yProps(1) as any}</Tab>
+        <Tab label="EMPLOYEE LIST">{a11yProps(0) as any}</Tab>
+        <Tab label="PERDORMANCE METRICS">{a11yProps(1) as any}</Tab>
       </Tabs>
       <CustomTabPanel value={something} index={0}>
         <TableContainer component={Paper}>
