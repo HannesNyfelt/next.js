@@ -40,7 +40,8 @@ export default function Home() {
       flexDirection: 'column',
       height: '90vh'
     }}>
-      <Typography variant='h1'>
+      <h1>Stopwatch</h1>
+      <Typography sx={{ backgroundColor: 'lightgray' }} variant='h1'>
         {hours}:{minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}:{milliseconds.toString().padStart(2, '0')}
       </Typography>
 
