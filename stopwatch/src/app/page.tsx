@@ -47,45 +47,45 @@ export default function Home() {
 
   //Clicker
   const [points, setPoints] = useState(0)
-  const [pointsPerSecond, setPointsPerSecond] = useState(0)
   const [pointsPerClick, setPointsPerClick] = useState(1)
-
   const [clickUpgradeCost, setClickUpgradeCost] = useState(10)
-  const [secondUpgradeCost, setSecondUpgradeCost] = useState(10)
-  const [clickUpgrade, setClickUpgrade] = useState(0)
-  const [secondUpgrade, setSecondUpgrade] = useState(0)
+  const [secondUpgradeCost, setSecondUpgradeCost] = useState(100)
 
-  function increment() {
+  const updateUI = () => {
+
+  }
+
+  const autoClick = () => {
+    setPoints(points => points + pointsPerClick)
+    updateUI()
+  }
+
+  const increment = () => {
     setPoints(points + pointsPerClick)
+    updateUI()
+  }
+
+  const buyClickUpgrade = () => {
+    if (points >= clickUpgradeCost) {
+      setPoints(points - clickUpgradeCost)
+      setPointsPerClick(pointsPerClick + 1)
+      setClickUpgradeCost(clickUpgradeCost * 2)
+      updateUI()
+    }
+  }
+
+  const buyAutoClicker = () => {
+    if (points >= secondUpgradeCost) {
+      setPoints(points - secondUpgradeCost)
+      setSecondUpgradeCost(secondUpgradeCost * 2)
+      setInterval(autoClick, 1000)
+      updateUI()
+    }
   }
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setPoints(points + pointsPerSecond)
-    }, 1000)
 
-    return () => {
-      clearInterval(interval)
-    }
-  }, [points, pointsPerSecond])
-
-  function buyClickUpgrade() {
-    if (points >= clickUpgradeCost) {
-      setPoints(points - clickUpgradeCost)
-      setClickUpgrade(clickUpgrade + 1)
-      setClickUpgradeCost(clickUpgradeCost * 2)
-      setPointsPerClick(pointsPerClick + 1)
-    }
-  }
-
-  function buySecondUpgrade() {
-    if (points >= secondUpgradeCost) {
-      setPoints(points - secondUpgradeCost)
-      setSecondUpgrade(secondUpgrade + 1)
-      setSecondUpgradeCost(secondUpgradeCost * 2)
-      setPointsPerSecond(pointsPerSecond + 1)
-    }
-  }
+  }, [])
 
   return (
     <Box sx={{
@@ -96,7 +96,6 @@ export default function Home() {
     }}>
       <h1>Clicker</h1>
       <h3>Points per click: {pointsPerClick}</h3>
-      <h3>Points per second: {pointsPerSecond}</h3>
       <Typography variant='h1'>{points}</Typography>
       <Button variant='contained' onClick={increment} >Click Here!</Button>
       <Box sx={{
@@ -112,7 +111,7 @@ export default function Home() {
           flexDirection: 'column'
         }}>
           <Typography variant='h6'>Buy click upgrade</Typography>
-          <Button variant='contained' onClick={buyClickUpgrade}>{clickUpgradeCost}</Button>
+          <Button variant='contained' onClick={buyClickUpgrade} disabled={points < clickUpgradeCost}>{clickUpgradeCost}</Button>
         </Box>
         <Box sx={{
           display: 'flex',
@@ -121,7 +120,7 @@ export default function Home() {
           flexDirection: 'column'
         }}>
           <Typography variant='h6'>Buy Second upgrade</Typography>
-          <Button variant='contained' onClick={buySecondUpgrade}>{secondUpgradeCost}</Button>
+          <Button variant='contained' onClick={buyAutoClicker} disabled={points < secondUpgradeCost}>{secondUpgradeCost}</Button>
         </Box>
       </Box>
       <h1>Clock</h1>
