@@ -56,7 +56,7 @@ export default function Home() {
   }
 
   const autoClick = () => {
-    setPoints(points => points + pointsPerClick)
+    setPoints(prevPoints => prevPoints + pointsPerClick)
     updateUI()
   }
 
@@ -78,7 +78,7 @@ export default function Home() {
     if (points >= secondUpgradeCost) {
       setPoints(points - secondUpgradeCost)
       setSecondUpgradeCost(secondUpgradeCost * 2)
-      setInterval(autoClick, 1000)
+      setInterval(autoClick(pointsPerClick), 1000)
       updateUI()
     }
   }
