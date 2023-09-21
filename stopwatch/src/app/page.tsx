@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import React, { useState, useEffect } from 'react'
 import { Box, Button, Typography } from '@mui/material'
@@ -46,46 +46,57 @@ export default function Home() {
   };
 
   //Clicker
-  const [points, setPoints] = useState(0)
-  const [pointsPerClick, setPointsPerClick] = useState(1)
-  const [clickUpgradeCost, setClickUpgradeCost] = useState(10)
-  const [secondUpgradeCost, setSecondUpgradeCost] = useState(100)
+  const [count, setCount] = useState(0);
+  const [add, setAdd] = useState(1);
+  const [cost1, setCost1] = useState(10);
+  const [cost2, setCost2] = useState(100);
 
-  const updateUI = () => {
 
-  }
-
-  const autoClick = () => {
-    setPoints(prevPoints => prevPoints + pointsPerClick)
-    updateUI()
-  }
+  const autoAdd = (currentAdd: any) => {
+    setCount(prevCount => prevCount + currentAdd);
+  };
 
   const increment = () => {
-    setPoints(points + pointsPerClick)
-    updateUI()
-  }
+    setCount(count + add);
+  };
 
   const buyClickUpgrade = () => {
-    if (points >= clickUpgradeCost) {
-      setPoints(points - clickUpgradeCost)
-      setPointsPerClick(pointsPerClick + 1)
-      setClickUpgradeCost(clickUpgradeCost * 2)
-      updateUI()
+    if (count >= cost1) {
+      setCount(count - cost1);
+      setAdd(add + 1);
+      setCost1(cost1 * 2);
     }
-  }
+  };
 
   const buyAutoClicker = () => {
-    if (points >= secondUpgradeCost) {
-      setPoints(points - secondUpgradeCost)
-      setSecondUpgradeCost(secondUpgradeCost * 2)
-      setInterval(autoClick(pointsPerClick), 1000)
-      updateUI()
+    if (count >= cost2) {
+      setCount(count - cost2);
+      setCost2(cost2 * 2);
+      setInterval(() => autoAdd(add), 1000);
     }
-  }
+  };
+
+  //Visit count
+  const [visits, setVisits] = useState(0)
 
   useEffect(() => {
+    let num = JSON.parse(localStorage.getItem('Times') as any);
+    setVisits(num);
 
-  }, [])
+    const handleLoad = () => {
+      const updatedNum = num + 1;
+      window.localStorage.setItem('Times', updatedNum);
+      setVisits(updatedNum);
+    };
+
+    handleLoad()
+
+
+    return () => {
+      window.removeEventListener('load', handleLoad);
+    };
+  }, []);
+
 
   return (
     <Box sx={{
@@ -95,8 +106,8 @@ export default function Home() {
       flexDirection: 'column',
     }}>
       <h1>Clicker</h1>
-      <h3>Points per click: {pointsPerClick}</h3>
-      <Typography variant='h1'>{points}</Typography>
+      <h3>Points per click: {add}</h3>
+      <Typography variant='h1'>{count}</Typography>
       <Button variant='contained' onClick={increment} >Click Here!</Button>
       <Box sx={{
         display: 'flex',
@@ -111,7 +122,7 @@ export default function Home() {
           flexDirection: 'column'
         }}>
           <Typography variant='h6'>Buy click upgrade</Typography>
-          <Button variant='contained' onClick={buyClickUpgrade} disabled={points < clickUpgradeCost}>{clickUpgradeCost}</Button>
+          <Button variant='contained' onClick={buyClickUpgrade} disabled={count < cost1}>{cost1}</Button>
         </Box>
         <Box sx={{
           display: 'flex',
@@ -119,8 +130,8 @@ export default function Home() {
           justifyContent: 'center',
           flexDirection: 'column'
         }}>
-          <Typography variant='h6'>Buy Second upgrade</Typography>
-          <Button variant='contained' onClick={buyAutoClicker} disabled={points < secondUpgradeCost}>{secondUpgradeCost}</Button>
+          <Typography variant='h6'>Buy one auto clicker</Typography>
+          <Button variant='contained' onClick={buyAutoClicker} disabled={count < cost2}>{cost2}</Button>
         </Box>
       </Box>
       <h1>Clock</h1>
@@ -140,6 +151,10 @@ export default function Home() {
         <Button color='success' variant='contained' onClick={startAndStop}>{isRunning ? 'Stop' : 'Start'}</Button>
         <Button color='error' variant='contained' onClick={reset}>Reset</Button>
       </Box>
+      <h1>Visit count</h1>
+      <Typography variant='h3'>
+        you have visited this website {visits} times
+      </Typography>
     </Box>
   )
 }
