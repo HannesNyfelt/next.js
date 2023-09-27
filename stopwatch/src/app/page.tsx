@@ -104,6 +104,7 @@ export default function Home() {
       alignItems: 'center',
       justifyContent: 'center',
       flexDirection: 'column',
+      marginBottom: 10
     }}>
       <h1>Clicker</h1>
       <h3>Points per click: {add}</h3>
