@@ -5,9 +5,9 @@ import React, { useState } from 'react'
 
 export default function Home() {
 
-  const [num1, setNum1] = useState(8)
-  const [num2, setNum2] = useState(2)
-  const [num3, setNum3] = useState(3)
+  const [num1, setNum1] = useState(0)
+  const [num2, setNum2] = useState(0)
+  const [num3, setNum3] = useState(0)
 
   const count = num1 + num2 + num3
 
