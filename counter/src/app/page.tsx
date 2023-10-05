@@ -59,9 +59,9 @@ export default function Home() {
         justifyContent: 'center',
         margin: 5
       }}>
-        <Button variant='outlined' onClick={() => handleIncrement(1)}>+</Button>
+        <Button variant='outlined' size="large" onClick={() => handleIncrement(1)}>+</Button>
         <Typography sx={{ margin: 2 }}>{num1}</Typography>
-        <Button variant='outlined' onClick={() => handleDecrement(1)}>-</Button>
+        <Button variant='outlined' size="large" onClick={() => handleDecrement(1)}>-</Button>
 
       </Box>
       <Typography variant='h3'>+</Typography>
@@ -72,9 +72,9 @@ export default function Home() {
         margin: 5
       }}>
 
-        <Button variant='outlined' onClick={() => handleIncrement(2)}>+</Button>
+        <Button variant='outlined' size="large" onClick={() => handleIncrement(2)}>+</Button>
         <Typography sx={{ margin: 2 }}>{num2}</Typography>
-        <Button variant='outlined' onClick={() => handleDecrement(2)}>-</Button>
+        <Button variant='outlined' size="large" onClick={() => handleDecrement(2)}>-</Button>
 
       </Box>
       <Typography variant='h3'>+</Typography>
@@ -84,9 +84,9 @@ export default function Home() {
         justifyContent: 'center',
         margin: 5
       }}>
-        <Button variant='outlined' onClick={() => handleIncrement(3)}>+</Button>
+        <Button variant='outlined' size="large" onClick={() => handleIncrement(3)}>+</Button>
         <Typography sx={{ margin: 2 }}>{num3}</Typography>
-        <Button variant='outlined' onClick={() => handleDecrement(3)}>-</Button>
+        <Button variant='outlined' size="large" onClick={() => handleDecrement(3)}>-</Button>
       </Box>
 
     </main>
