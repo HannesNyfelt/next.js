@@ -52,7 +52,6 @@ export default function Home() {
       flexDirection: 'row-reverse'
     }}>
       <Typography variant='h1'>{count}</Typography>
-      <Typography variant='h3'>=</Typography>
       <Box sx={{
         display: 'flex',
         alignItems: 'center',
@@ -64,7 +63,6 @@ export default function Home() {
         <Button variant='outlined' size="large" onClick={() => handleDecrement(1)}>-</Button>
 
       </Box>
-      <Typography variant='h3'>+</Typography>
       <Box sx={{
         display: 'flex',
         alignItems: 'center',
@@ -77,7 +75,6 @@ export default function Home() {
         <Button variant='outlined' size="large" onClick={() => handleDecrement(2)}>-</Button>
 
       </Box>
-      <Typography variant='h3'>+</Typography>
       <Box sx={{
         display: 'flex',
         alignItems: 'center',
