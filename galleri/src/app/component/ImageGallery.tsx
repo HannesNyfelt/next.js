@@ -63,6 +63,10 @@ function ImageGallery() {
         setFilter('Small Animal')
     }
 
+    function noFilter() {
+        setFilter('')
+    }
+
     return (
         <div>
             <div>
@@ -71,6 +75,7 @@ function ImageGallery() {
                     <button onClick={filterLarge}>Large animals</button>
                     <button onClick={filterMedium}>Medium animals</button>
                     <button onClick={filterSmall}>Small animals</button>
+                    <button onClick={noFilter}>No filter</button>
                 </div>
             </div>
             <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
