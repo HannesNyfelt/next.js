@@ -1,11 +1,8 @@
 "use client"
-import Filter from './component/Filter'
-import './globals.css'
+import ImageGallery from './component/ImageGallery'
 
 export default function Home() {
-
-
   return (
-    <Filter></Filter>
+    <ImageGallery></ImageGallery>
   )
 }
