@@ -3,16 +3,15 @@ import React, { useState } from 'react';
 import { Button, TextField, Stack } from '@mui/material';
 
 const ExpenseForm = ({ addExpense }: any) => {
-    const [name, setName] = useState('');
+    const [participants, setParticipants] = useState('');
     const [amount, setAmount] = useState('');
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
-        if (name && amount) {
-            addExpense({ name, amount: parseFloat(amount) });
-            setName('');
+        if (participants && amount) {
+            addExpense({ participants, amount: parseFloat(amount) });
+            setParticipants('');
             setAmount('');
-            console.log(name, amount);
 
         }
     };
@@ -23,8 +22,8 @@ const ExpenseForm = ({ addExpense }: any) => {
                 <TextField
                     label="Name"
                     type='text'
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    value={participants}
+                    onChange={(e) => setParticipants(e.target.value)}
                 />
                 <TextField
                     label="Amount"

@@ -13,7 +13,7 @@ const ExpenseList = ({ expenses }: any) => {
                     {expenses.map((expense: any, index: any) => (
                         <ListItem key={index}>
                             <ListItemText
-                                primary={expense.description}
+                                primary={expense.participants}
                                 secondary={`$ ${expense.amount.toFixed(2)}`}
                             />
                         </ListItem>
