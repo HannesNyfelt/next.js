@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from "react";
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from "@mui/material";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, Box } from "@mui/material";
 
 export default function Home() {
 
@@ -11,7 +11,6 @@ export default function Home() {
       const res = await fetch('https://api.coincap.io/v2/assets')
       const data = await res.json()
       setAssets(data.data)
-      console.log(data);
 
     }
     fetchData().catch(e => {
@@ -20,7 +19,8 @@ export default function Home() {
   }, [])
 
   return (
-    <TableContainer id="mainContainer" component={Paper}>
+    <TableContainer sx={{ minWidth: 580, display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }} id="mainContainer" component={Paper}>
+      <Typography className="text" variant="h2" >Crypto Valuator</Typography>
       <Table aria-label="Crypto Valuator">
         <TableHead>
           <TableRow id="topRow">
@@ -31,14 +31,29 @@ export default function Home() {
         </TableHead>
         <TableBody>
           {assets.map(asset => (
-            <TableRow key={asset.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-              <TableCell component="th" scope="row" >{asset.name}</TableCell>
-              <TableCell align="right">${asset.priceUsd / 1}</TableCell>
-              <TableCell align="right">{asset.changePercent24Hr}%</TableCell>
+            <TableRow id="resRow" key={asset.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+
+              <TableCell className="test2" component="th" scope="row" >
+                <Typography className="test"><b>Name</b></Typography>
+                <Typography>{asset.name}</Typography>
+              </TableCell>
+
+              <TableCell className="test2" align="right">
+                <Typography className="test"><b>Price</b></Typography>
+                <Typography>${asset.priceUsd / 1}</Typography>
+              </TableCell>
+
+              <TableCell className="test2" align="right">
+                <Typography className="test"><b>Change in %</b></Typography>
+                <Typography>{asset.changePercent24Hr}%</Typography>
+              </TableCell>
+
             </TableRow>
           ))}
         </TableBody>
       </Table>
-    </TableContainer >
+    </TableContainer>
   );
 }
+//make this responsive by stacking all three Cells in a column
+
