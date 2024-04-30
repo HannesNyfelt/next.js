@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from "react";
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, Box } from "@mui/material";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography } from "@mui/material";
 
 export default function Home() {
 
@@ -55,5 +55,3 @@ export default function Home() {
     </TableContainer>
   );
 }
-//make this responsive by stacking all three Cells in a column
-
